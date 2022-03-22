@@ -1,27 +1,47 @@
 import { randomBytes } from 'node:crypto';
 import { colors } from './Colors';
-import { lt } from './Font';
+import { allLetters } from './Font';
 import { SW } from './Sw';
 
+/**
+ * The captcha generator
+ */
 export class Captcha {
 	private readonly numberOfDots;
 	private readonly gifSize = 17646;
 	private readonly letters = 'abcdefghijklmnopqrstuvwxyz';
 	private readonly blurImg;
 	private readonly filterImg;
+
 	public constructor({ numberOfDots = 100, blur = false, filter = false }: Options = {}) {
 		this.numberOfDots = numberOfDots;
 		this.blurImg = blur;
 		this.filterImg = filter;
 	}
 
+	/**
+	 *
+	 * @param min min size
+	 * @param max max size
+	 * @returns A number between min and max
+	 */
 	private random(min: number, max: number) {
 		return Math.floor(Math.random() * (max - min)) + min;
 	}
 
-	private letter(n: number, pos: number, im: Buffer, swr: Buffer, s1: number, s2: number) {
-		const l = im.length;
-		const t = lt[n];
+	/**
+	 *
+	 * @param n The index of the letter
+	 * @param pos The position of the letter
+	 * @param background The background buffer
+	 * @param swr The sw buffer
+	 * @param s1 The s1 value
+	 * @param s2 The s2 value
+	 * @returns The new position of the letter
+	 */
+	private letter(n: number, pos: number, background: Buffer, swr: Buffer, s1: number, s2: number) {
+		const l = background.length;
+		const t = allLetters[n];
 		let r = 200 * 16 + pos;
 		let i = r;
 		let sk1 = s1 + pos;
@@ -56,63 +76,82 @@ export class Captcha {
 			const x = i + skew * 200 + skewh;
 			mpos = Math.max(mpos, pos + i - r);
 
-			if (x - l < 70 * 200) im[x] = p << 4;
+			if (x - l < 70 * 200) background[x] = p << 4;
 			i++;
 		}
 
 		return mpos;
 	}
 
-	private line(im: Buffer, swr: Buffer, s1: number) {
+	/**
+	 *
+	 * @param background The background buffer
+	 * @param swr The sw buffer
+	 * @param s1 The s1 value
+	 */
+	private line(background: Buffer, swr: Buffer, s1: number) {
 		for (let x = 0, sk1 = s1; x < 199; x++) {
 			if (sk1 >= 200) sk1 %= 200;
 			const skew = Math.floor(SW[sk1] / 16);
 			sk1 += (swr[x] & 0x3) + 1;
 			const i = 200 * (45 + skew) + x;
-			im[i + 0] = 0;
-			im[i + 1] = 0;
-			im[i + 200] = 0;
-			im[i + 201] = 0;
+			background[i + 0] = 0;
+			background[i + 1] = 0;
+			background[i + 200] = 0;
+			background[i + 201] = 0;
 		}
 	}
 
-	private dots(im: Buffer, dr: Buffer) {
+	/**
+	 *
+	 * @param background The background buffer
+	 * @param dr The dr buffer
+	 */
+	private dots(background: Buffer, dr: Buffer) {
 		for (let n = 0; n < this.numberOfDots; n++) {
 			const v = dr.readUInt32BE(n);
 			const i = v % (200 * 67);
 
-			im[i + 0] = 0xff;
-			im[i + 1] = 0xff;
-			im[i + 2] = 0xff;
-			im[i + 200] = 0xff;
-			im[i + 201] = 0xff;
-			im[i + 202] = 0xff;
+			background[i + 0] = 0xff;
+			background[i + 1] = 0xff;
+			background[i + 2] = 0xff;
+			background[i + 200] = 0xff;
+			background[i + 201] = 0xff;
+			background[i + 202] = 0xff;
 		}
 	}
 
-	private blur(im: Buffer) {
+	/**
+	 *
+	 * @param background The background buffer
+	 */
+	private blur(background: Buffer) {
 		for (let i = 0, y = 0; y < 68; y++) {
 			for (let x = 0; x < 198; x++) {
-				const c11 = im[i + 0];
-				const c12 = im[i + 1];
-				const c21 = im[i + 200];
-				const c22 = im[i + 201];
-				im[i++] = Math.floor((c11 + c12 + c21 + c22) / 4);
+				const c11 = background[i + 0];
+				const c12 = background[i + 1];
+				const c21 = background[i + 200];
+				const c22 = background[i + 201];
+				background[i++] = Math.floor((c11 + c12 + c21 + c22) / 4);
 			}
 		}
 	}
 
-	private filter(im: Buffer) {
+	/**
+	 *
+	 * @param background The background buffer
+	 */
+	private filter(background: Buffer) {
 		const om = Buffer.alloc(70 * 200).fill(0xff);
 		let i = 0;
 		let o = 0;
 
 		for (let y = 0; y < 70; y++) {
 			for (let x = 4; x < 200 - 4; x++) {
-				if (im[i] > 0xf0 && im[i + 1] < 0xf0) {
+				if (background[i] > 0xf0 && background[i + 1] < 0xf0) {
 					om[o] = 0;
 					om[o + 1] = 0;
-				} else if (im[i] < 0xf0 && im[i + 1] > 0xf0) {
+				} else if (background[i] < 0xf0 && background[i + 1] > 0xf0) {
 					om[o] = 0;
 					om[o + 1] = 0;
 				}
@@ -122,24 +161,27 @@ export class Captcha {
 			}
 		}
 
-		om.copy(im);
+		om.copy(background);
 	}
 
-	public makeCaptcha(size: number) {
+	/**
+	 *
+	 * @param size The number of letters
+	 * @returns The background buffer and the token
+	 */
+	private makeCaptcha(size: number) {
 		const rb = randomBytes(size + 200 + 100 * 4 + 1 + 1);
-		const token = Buffer.alloc(size);
+		const tb = Buffer.alloc(size);
 		const swr = Buffer.alloc(200);
 		const dr = Buffer.alloc(100 * 4);
-		let s1;
-		let s2;
 
-		rb.copy(token, 0, 0, size);
+		rb.copy(tb, 0, 0, size);
 		rb.copy(swr, 0, size, size + 200);
 		rb.copy(dr, 0, size + 200, size + 200 + 100 * 4);
-		s1 = rb.readUInt8(size + 200 + 100 * 4);
-		s2 = rb.readUInt8(size + 200 + 100 * 4 + 1);
+		let s1 = rb.readUInt8(size + 200 + 100 * 4);
+		let s2 = rb.readUInt8(size + 200 + 100 * 4 + 1);
 
-		const im = Buffer.alloc(200 * 70).fill(0xff);
+		const background = Buffer.alloc(200 * 70).fill(0xff);
 
 		s1 &= 0x7f;
 		s2 &= 0x3f;
@@ -147,25 +189,28 @@ export class Captcha {
 		let p = 30;
 
 		for (let n = 0; n < size; n++) {
-			token[n] %= 25;
-			p = this.letter(token[n], p, im, swr, s1, s2);
-			token[n] = this.letters.charCodeAt(token[n]);
+			tb[n] %= 25;
+			p = this.letter(tb[n], p, background, swr, s1, s2);
+			tb[n] = this.letters.charCodeAt(tb[n]);
 		}
 
-		this.line(im, swr, s1);
-		this.dots(im, dr);
-		if (this.blurImg) this.blur(im);
-		if (this.filterImg) this.filter(im);
+		this.line(background, swr, s1);
+		this.dots(background, dr);
+		if (this.blurImg) this.blur(background);
+		if (this.filterImg) this.filter(background);
 
-		return { im, token: token.toString() };
+		return { background, token: tb.toString() };
 	}
 
-	// http://brokestream.com/captcha.html
-	private makeGif(im: Buffer, gif: Buffer, style?: number) {
-		// tag ; widthxheight ; GCT:0:0:7 ; bgcolor + aspect // GCT
-		// Image Separator // left x top // widthxheight // Flags
-		// LZW code size
-		const r = style ?? this.random(0, colors.length);
+	/**
+	 *
+	 * @param background The background buffer
+	 * @param gif The gif buffer
+	 * @param color The color of the text
+	 *
+	 */
+	private makeGif(background: Buffer, gif: Buffer, color?: number) {
+		const r = color ?? this.random(0, colors.length);
 		gif.fill(colors[r].replace(/\n/g, ''), 0, 13 + 48 + 10 + 1, 'ascii');
 
 		let i = 0;
@@ -173,10 +218,10 @@ export class Captcha {
 		for (let y = 0; y < 70; y++) {
 			gif[p++] = 250; // Data length 5*50=250
 			for (let x = 0; x < 50; x++) {
-				const a = im[i + 0] >> 4;
-				const b = im[i + 1] >> 4;
-				const c = im[i + 2] >> 4;
-				const d = im[i + 3] >> 4;
+				const a = background[i + 0] >> 4;
+				const b = background[i + 1] >> 4;
+				const c = background[i + 2] >> 4;
+				const d = background[i + 3] >> 4;
 
 				gif[p + 0] = 16 | (a << 5); // bbb10000
 				gif[p + 1] = (a >> 3) | 64 | (b << 7); // b10000xb
@@ -191,10 +236,16 @@ export class Captcha {
 		gif.fill('\x01\x11\x00;', this.gifSize - 4);
 	}
 
-	public generate(size = 5, style?: number) {
+	/**
+	 *
+	 * @param size The number of letters
+	 * @param color The color of the text
+	 * @returns
+	 */
+	public generate(size = 5, color?: number) {
 		const buffer = Buffer.alloc(this.gifSize);
-		const { im, token } = this.makeCaptcha(size);
-		this.makeGif(im, buffer, style);
+		const { background, token } = this.makeCaptcha(size);
+		this.makeGif(background, buffer, color);
 
 		return {
 			buffer,
@@ -203,6 +254,9 @@ export class Captcha {
 	}
 }
 
+/**
+ * The options for the captcha constructor
+ */
 export interface Options {
 	numberOfDots?: number;
 	blur?: boolean;

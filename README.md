@@ -14,7 +14,9 @@
 
 A simple lightweight captcha generator for nodejs.
 
-Read Full Documentation [here](https://captcha-gif.js.org/).
+Impliments [captcha generator in C](http://brokestream.com/captcha.html) in js.
+
+Read TypeDoc generated Documentation [here](https://captcha-gif.js.org/).
 
 ## Features
 
@@ -35,17 +37,17 @@ yarn add captcha.gif
 
 ## Usage
 
-**Note:** While examples uses `import`, it maps 1:1 with CommonJS' require syntax. For example, `import { package } from 'package-name'` is the same as `const { mahrin } = require('template')`.
-
 ```ts
 import { Captcha } from 'captcha.gif';
+```
+
+```js
+const { Captcha } = require('captcha.gif');
 ```
 
 ### Generate Captcha
 
 ```ts
-import { Captcha } from 'captcha.gif';
-
 const captcha = new Captcha();
 
 const { token, buffer } = captcha.generate();
