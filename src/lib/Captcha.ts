@@ -6,16 +6,10 @@ import { SW } from './Sw';
 export class Captcha {
 	private readonly numberOfDots;
 	private readonly gifSize = 17646;
-	private readonly letters;
+	private readonly letters = 'abcdafahijklmnopqrstuvwxyz';
 	private readonly blurImg;
 	private readonly filterImg;
-	public constructor({
-		letters = 'abcdafahijklmnopqrstuvwxyz',
-		numberOfDots = 100,
-		blur = false,
-		filter = false,
-	}: Options = {}) {
-		this.letters = letters;
+	public constructor({ numberOfDots = 100, blur = false, filter = false }: Options = {}) {
 		this.numberOfDots = numberOfDots;
 		this.blurImg = blur;
 		this.filterImg = filter;
@@ -211,7 +205,6 @@ export class Captcha {
 
 export interface Options {
 	numberOfDots?: number;
-	letters?: string;
 	blur?: boolean;
 	filter?: boolean;
 }
