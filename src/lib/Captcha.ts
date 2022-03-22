@@ -6,7 +6,7 @@ import { SW } from './Sw';
 export class Captcha {
 	private readonly numberOfDots;
 	private readonly gifSize = 17646;
-	private readonly letters = 'abcdafahijklmnopqrstuvwxyz';
+	private readonly letters = 'abcdefghijklmnopqrstuvwxyz';
 	private readonly blurImg;
 	private readonly filterImg;
 	public constructor({ numberOfDots = 100, blur = false, filter = false }: Options = {}) {
@@ -63,7 +63,7 @@ export class Captcha {
 		return mpos;
 	}
 
-	private line(im: Uint8Array, swr: Buffer, s1: number) {
+	private line(im: Buffer, swr: Buffer, s1: number) {
 		for (let x = 0, sk1 = s1; x < 199; x++) {
 			if (sk1 >= 200) sk1 %= 200;
 			const skew = Math.floor(SW[sk1] / 16);
