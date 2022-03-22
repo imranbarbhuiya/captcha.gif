@@ -25,7 +25,7 @@ jobs:
         run: yarn --immutable
 
       - name: Test
-        run: yarn test --coverage --passWithNoTests
+        run: yarn test --coverage
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@f32b3a3741e1053eb607407145bc9619351dc93b # tag=v2.1.0
