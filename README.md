@@ -4,9 +4,9 @@
 
 **A simple captcha generator for nodejs.**
 
-[![GitHub](https://img.shields.io/github/license/imranbarbhuiya/captcha.gif)](https://github.com/imranbarbhuiya/captcha.gif/blob/main/LICENSE.md)
+[![GitHub](https://badgen.net/github/license/imranbarbhuiya/captcha.gif?icon=github)](https://github.com/imranbarbhuiya/captcha.gif/blob/main/LICENSE.md)
 [![codecov](https://codecov.io/gh/imranbarbhuiya/captcha.gif/branch/main/graph/badge.svg?token=token)](https://codecov.io/gh/imranbarbhuiya/captcha.gif)
-[![npm](https://img.shields.io/npm/v/captcha.gif?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/captcha.gif)
+[![npm](https://badgen.net/npm/v/captcha.gif?icon=npm)](https://www.npmjs.com/package/captcha.gif)
 
 </div>
 
