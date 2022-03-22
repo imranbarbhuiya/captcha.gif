@@ -18,14 +18,14 @@
 	},
 	"scripts": {
 		"docs": "typedoc",
-		"build": "tsup && tsc -b src",
+		"build": "tsc -p src/tsconfig.json",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"format": "prettier --write '**/*.{ts,js,mjs,json,md}'",
 		"test": "jest",
 		"test:watch": "jest --watch",
 		"prepublishOnly": "rollup-type-bundler",
-		"postinstall": "husky install"
+		"prepare": "husky install"
 	},
 	"keywords": [
 		"captcha",
