@@ -12,7 +12,6 @@ export default defineConfig({
 	keepNames: true,
 	globalName: 'template',
 	tsconfig: 'src/tsconfig.json',
-	legacyOutput: true,
 	esbuildOptions: (options, context) => {
 		if (context.format === 'cjs') {
 			options.banner = {

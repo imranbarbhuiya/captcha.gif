@@ -18,7 +18,7 @@
 	},
 	"scripts": {
 		"docs": "typedoc",
-		"build": "tsc -p src/tsconfig.json",
+		"build": "tsup && tsc -b src",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"format": "prettier --write '**/*.{ts,js,mjs,json,md}'",
