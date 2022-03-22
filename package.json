@@ -1,6 +1,6 @@
 {
 	"name": "captcha.gif",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "A simple captcha generator for nodejs.",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
