@@ -1,11 +1,9 @@
 {
-	"name": "template",
-	"version": "0.0.0",
-	"description": "Package description.",
+	"name": "captcha.gif",
+	"version": "0.0.1",
+	"description": "A simple captcha generator for nodejs.",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
-	"browser": "dist/index.global.js",
-	"unpkg": "dist/index.global.js",
 	"types": "dist/index.d.ts",
 	"exports": {
 		"import": "./dist/index.mjs",
@@ -30,7 +28,10 @@
 		"postinstall": "husky install"
 	},
 	"keywords": [
-		"some keywords"
+		"captcha",
+		"captcha.gif",
+		"captcha generator",
+		"node captcha"
 	],
 	"publishConfig": {
 		"access": "public"
@@ -64,12 +65,12 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/imranbarbhuiya/template.git"
+		"url": "git+https://github.com/imranbarbhuiya/captcha.gif.git"
 	},
 	"bugs": {
-		"url": "https://github.com/imranbarbhuiya/template/issues"
+		"url": "https://github.com/imranbarbhuiya/captcha.gif/issues"
 	},
-	"homepage": "https://template.js.org/",
+	"homepage": "https://captcha-gif.js.org/",
 	"packageManager": "yarn@3.2.0",
 	"lint-staged": {
 		"*.ts": [

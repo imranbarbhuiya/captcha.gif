@@ -1,43 +1,35 @@
 <div align="center">
 
-# @imranbarbhuiya/template
+# captcha.gif
 
-**Template for Parbez's Repositories.**
+**A simple captcha generator for nodejs.**
 
-[![GitHub](https://img.shields.io/github/license/imranbarbhuiya/package-template)](https://github.com/imranbarbhuiya/package-template/blob/main/LICENSE.md)
-[![codecov](https://codecov.io/gh/imranbarbhuiya/template/branch/main/graph/badge.svg?token=token)](https://codecov.io/gh/imranbarbhuiya/template)
-[![npm](https://img.shields.io/npm/v/@imranbarbhuiya/template?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@imranbarbhuiya/template)
+[![GitHub](https://img.shields.io/github/license/imranbarbhuiya/captcha.gif)](https://github.com/imranbarbhuiya/captcha.gif/blob/main/LICENSE.md)
+[![codecov](https://codecov.io/gh/imranbarbhuiya/captcha.gif/branch/main/graph/badge.svg?token=token)](https://codecov.io/gh/imranbarbhuiya/captcha.gif)
+[![npm](https://img.shields.io/npm/v/captcha.gif?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/captcha.gif)
 
 </div>
 
-## Steps after creating a repo with this template
-
-1. Find and replace all instances of `template` with the package name.
-2. Ensure branch protection is on
-3. Enable Codecov for the repository
-4. Remove this section from the README
-
 ## Description
 
-A description of the package.
+A simple lightweight captcha generator for nodejs.
 
-Read Full Documentation [here](https://template.js.org/).
+Read Full Documentation [here](https://captcha-gif.js.org/).
 
 ## Features
 
 - Written In Typescript
-- Offers CJS, ESM and UMD builds
+- Offers CJS, ESM builds
 - Full TypeScript & JavaScript support
 
 ## Install
 
 ```bash
 # npm
-# TODO: change name
-npm i template
+npm i captcha.gif
 
 # yarn
-yarn add template
+yarn add captcha.gif
 
 ```
 
@@ -46,10 +38,18 @@ yarn add template
 **Note:** While examples uses `import`, it maps 1:1 with CommonJS' require syntax. For example, `import { package } from 'package-name'` is the same as `const { mahrin } = require('template')`.
 
 ```ts
-import { mahrin } from 'template';
+import { Captcha } from 'captcha.gif';
 ```
 
-### Some contents goes here //TODO
+### Generate Captcha
+
+```ts
+import { Captcha } from 'captcha.gif';
+
+const captcha = new Captcha();
+
+const { token, buffer } = captcha.generate();
+```
 
 ## Contributors ✨
 
@@ -60,7 +60,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/imranbarbhuiya"><img src="https://avatars.githubusercontent.com/u/74945038?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Parbez</b></sub></a><br /><a href="https://github.com/imranbarbhuiya/package-template/commits?author=imranbarbhuiya" title="Code">💻</a> <a href="#maintenance-imranbarbhuiya" title="Maintenance">🚧</a> <a href="#ideas-imranbarbhuiya" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/imranbarbhuiya"><img src="https://avatars.githubusercontent.com/u/74945038?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Parbez</b></sub></a><br /><a href="https://github.com/imranbarbhuiya/captcha.gif/commits?author=imranbarbhuiya" title="Code">💻</a> <a href="#maintenance-imranbarbhuiya" title="Maintenance">🚧</a> <a href="#ideas-imranbarbhuiya" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://renovate.whitesourcesoftware.com"><img src="https://avatars.githubusercontent.com/u/25180681?v=4?s=100" width="100px;" alt=""/><br /><sub><b>WhiteSource Renovate</b></sub></a><br /><a href="#maintenance-renovate-bot" title="Maintenance">🚧</a></td>
   </tr>
 </table>
