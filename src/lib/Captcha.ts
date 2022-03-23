@@ -7,11 +7,11 @@ import { SW } from './Sw';
  * The captcha generator
  */
 export class Captcha {
-	private readonly numberOfDots;
+	private readonly numberOfDots: number;
 	private readonly gifSize = 17646;
 	private readonly letters = 'abcdefghijklmnopqrstuvwxyz';
-	private readonly blurImg;
-	private readonly filterImg;
+	private readonly blurImg: boolean;
+	private readonly filterImg: boolean;
 
 	public constructor({ numberOfDots = 100, blur = false, filter = false }: Options = {}) {
 		this.numberOfDots = numberOfDots;
@@ -209,8 +209,8 @@ export class Captcha {
 	 * @param color The color of the text
 	 *
 	 */
-	private makeGif(background: Buffer, gif: Buffer, color?: number) {
-		const r = color ?? this.random(0, colors.length);
+	private makeGif(background: Buffer, gif: Buffer, color?: Color) {
+		const r = color ?? (this.random(0, colors.length) as Color);
 		gif.fill(colors[r].replace(/\n/g, ''), 0, 13 + 48 + 10 + 1, 'ascii');
 
 		let i = 0;
@@ -240,9 +240,9 @@ export class Captcha {
 	 *
 	 * @param size The number of letters
 	 * @param color The color of the text
-	 * @returns
+	 * @returns The gif buffer and the token
 	 */
-	public generate(size = 5, color?: number) {
+	public generate(size = 5, color?: Color) {
 		const buffer = Buffer.alloc(this.gifSize);
 		const { background, token } = this.makeCaptcha(size);
 		this.makeGif(background, buffer, color);
@@ -262,3 +262,5 @@ export interface Options {
 	blur?: boolean;
 	filter?: boolean;
 }
+
+export type Color = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17;

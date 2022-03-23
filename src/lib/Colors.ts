@@ -340,4 +340,4 @@ export const colors = [
 \x79\x55\x48
 \x79\x55\x48
 \xff\xff\xff,\0\0\0\0\xc8\0\x46\0\0\x04`,
-];
+] as const;
