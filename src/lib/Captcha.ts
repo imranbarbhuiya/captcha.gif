@@ -21,6 +21,23 @@ export class Captcha {
 
 	/**
 	 *
+	 * @param size The number of letters
+	 * @param color The color of the text
+	 * @returns The gif buffer and the token
+	 */
+	public generate(size = 5, color?: Color) {
+		const buffer = Buffer.alloc(this.gifSize);
+		const { background, token } = this.makeCaptcha(size);
+		this.makeGif(background, buffer, color);
+
+		return {
+			buffer,
+			token
+		};
+	}
+
+	/**
+	 *
 	 * @param min min size
 	 * @param max max size
 	 * @returns A number between min and max
@@ -234,23 +251,6 @@ export class Captcha {
 		}
 
 		gif.fill('\x01\x11\x00;', this.gifSize - 4);
-	}
-
-	/**
-	 *
-	 * @param size The number of letters
-	 * @param color The color of the text
-	 * @returns The gif buffer and the token
-	 */
-	public generate(size = 5, color?: Color) {
-		const buffer = Buffer.alloc(this.gifSize);
-		const { background, token } = this.makeCaptcha(size);
-		this.makeGif(background, buffer, color);
-
-		return {
-			buffer,
-			token,
-		};
 	}
 }
 

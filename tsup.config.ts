@@ -14,9 +14,9 @@ export default defineConfig({
 	esbuildOptions: (options, context) => {
 		if (context.format === 'cjs') {
 			options.banner = {
-				js: '"use strict";',
+				js: '"use strict";'
 			};
 		}
 		options.charset = 'utf8';
-	},
+	}
 });
