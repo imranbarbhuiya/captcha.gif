@@ -22,7 +22,7 @@
 		"test": "jest",
 		"test:watch": "jest --watch",
 		"prepack": "rollup-type-bundler",
-		"prepare": "husky install"
+		"prepare": "husky install .github/husky"
 	},
 	"keywords": [
 		"captcha",
@@ -50,7 +50,6 @@
 		"eslint-plugin-prettier": "^4.0.0",
 		"husky": "^7.0.4",
 		"jest": "^28.0.3",
-		"jest-circus": "^28.0.3",
 		"lint-staged": "^12.4.1",
 		"prettier": "^2.6.2",
 		"ts-jest": "^28.0.1",
