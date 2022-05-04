@@ -16,7 +16,7 @@ A simple lightweight captcha generator for nodejs.
 
 Impliments [captcha generator in C](http://brokestream.com/captcha.html) in js.
 
-Read TypeDoc generated Documentation [here](https://captcha-gif.js.org/).
+Read TypeDoc generated Documentation [here](https://imranbarbhuiya.github.io/captcha.gif/).
 
 ## Features
 

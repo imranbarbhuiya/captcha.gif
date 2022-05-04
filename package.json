@@ -68,7 +68,7 @@
 	"bugs": {
 		"url": "https://github.com/imranbarbhuiya/captcha.gif/issues"
 	},
-	"homepage": "https://captcha-gif.js.org/",
+	"homepage": "https://imranbarbhuiya.github.io/captcha.gif/",
 	"packageManager": "yarn@3.2.0",
 	"lint-staged": {
 		"*.ts": [
