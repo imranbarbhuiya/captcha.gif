@@ -22,7 +22,7 @@
 		"test": "jest",
 		"test:watch": "jest --watch",
 		"prepack": "rollup-type-bundler",
-		"prepare": "husky install .github/husky"
+		"prepare": "husky install .github/.husky"
 	},
 	"keywords": [
 		"captcha",
