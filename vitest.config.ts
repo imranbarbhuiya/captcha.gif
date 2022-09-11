@@ -7,5 +7,5 @@ export default defineConfig({
 			enabled: true,
 			reporter: ['text', 'lcov', 'clover']
 		}
-	},
+	}
 });
