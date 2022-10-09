@@ -37,16 +37,16 @@
 	"devDependencies": {
 		"@commitlint/cli": "^17.1.2",
 		"@commitlint/config-angular": "^17.1.0",
-		"@favware/cliff-jumper": "^1.8.7",
+		"@favware/cliff-jumper": "^1.8.8",
 		"@sapphire/eslint-config": "^4.3.8",
 		"@sapphire/prettier-config": "^1.4.4",
 		"@types/node": "^17.0.31",
 		"@types/prettier": "^2",
-		"@typescript-eslint/eslint-plugin": "^5.38.1",
-		"@typescript-eslint/parser": "^5.38.1",
-		"@vitest/coverage-c8": "^0.23.4",
+		"@typescript-eslint/eslint-plugin": "^5.39.0",
+		"@typescript-eslint/parser": "^5.39.0",
+		"@vitest/coverage-c8": "^0.24.0",
 		"conventional-changelog-cli": "^2.2.2",
-		"eslint": "^8.24.0",
+		"eslint": "^8.25.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-prettier": "^4.2.1",
 		"husky": "^8.0.1",
@@ -55,7 +55,7 @@
 		"tsup": "^6.2.3",
 		"typedoc": "^0.23.15",
 		"typescript": "^4.8.4",
-		"vitest": "^0.23.4"
+		"vitest": "^0.24.0"
 	},
 	"files": [
 		"dist",
@@ -69,7 +69,7 @@
 		"url": "https://github.com/imranbarbhuiya/captcha.gif/issues"
 	},
 	"homepage": "https://imranbarbhuiya.github.io/captcha.gif/",
-	"packageManager": "yarn@3.2.3",
+	"packageManager": "yarn@3.2.4",
 	"lint-staged": {
 		"*.ts": [
 			"prettier --write",
