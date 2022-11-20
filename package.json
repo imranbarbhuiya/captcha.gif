@@ -37,25 +37,25 @@
 	"devDependencies": {
 		"@commitlint/cli": "^17.2.0",
 		"@commitlint/config-angular": "^17.2.0",
-		"@favware/cliff-jumper": "^1.8.8",
+		"@favware/cliff-jumper": "^1.9.0",
 		"@sapphire/eslint-config": "^4.3.8",
 		"@sapphire/prettier-config": "^1.4.4",
 		"@types/node": "^18.11.9",
 		"@types/prettier": "^2",
-		"@typescript-eslint/eslint-plugin": "^5.42.1",
-		"@typescript-eslint/parser": "^5.42.1",
-		"@vitest/coverage-c8": "^0.25.1",
+		"@typescript-eslint/eslint-plugin": "^5.43.0",
+		"@typescript-eslint/parser": "^5.43.0",
+		"@vitest/coverage-c8": "^0.25.2",
 		"conventional-changelog-cli": "^2.2.2",
-		"eslint": "^8.27.0",
+		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-prettier": "^4.2.1",
 		"husky": "^8.0.2",
 		"lint-staged": "^13.0.3",
 		"prettier": "^2.7.1",
-		"tsup": "^6.4.0",
-		"typedoc": "^0.23.20",
-		"typescript": "^4.8.4",
-		"vitest": "^0.25.1"
+		"tsup": "^6.5.0",
+		"typedoc": "^0.23.21",
+		"typescript": "^4.9.3",
+		"vitest": "^0.25.2"
 	},
 	"files": [
 		"dist",
@@ -69,7 +69,7 @@
 		"url": "https://github.com/imranbarbhuiya/captcha.gif/issues"
 	},
 	"homepage": "https://imranbarbhuiya.github.io/captcha.gif/",
-	"packageManager": "yarn@3.2.4",
+	"packageManager": "yarn@3.3.0",
 	"lint-staged": {
 		"*.ts": [
 			"prettier --write",
