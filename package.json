@@ -41,10 +41,10 @@
 		"@sapphire/eslint-config": "^4.3.8",
 		"@sapphire/prettier-config": "^1.4.4",
 		"@types/node": "^18.11.17",
-		"@types/prettier": "^2.7.1",
-		"@typescript-eslint/eslint-plugin": "^5.46.1",
-		"@typescript-eslint/parser": "^5.46.1",
-		"@vitest/coverage-c8": "^0.25.8",
+		"@types/prettier": "^2.7.2",
+		"@typescript-eslint/eslint-plugin": "^5.47.0",
+		"@typescript-eslint/parser": "^5.47.0",
+		"@vitest/coverage-c8": "^0.26.2",
 		"conventional-changelog-cli": "^2.2.2",
 		"eslint": "^8.30.0",
 		"eslint-config-prettier": "^8.5.0",
@@ -55,7 +55,7 @@
 		"tsup": "^6.5.0",
 		"typedoc": "^0.23.23",
 		"typescript": "^4.9.4",
-		"vitest": "^0.25.8"
+		"vitest": "^0.26.2"
 	},
 	"files": [
 		"dist",
@@ -69,7 +69,7 @@
 		"url": "https://github.com/imranbarbhuiya/captcha.gif/issues"
 	},
 	"homepage": "https://imranbarbhuiya.github.io/captcha.gif/",
-	"packageManager": "yarn@3.3.0",
+	"packageManager": "yarn@3.3.1",
 	"lint-staged": {
 		"*.ts": [
 			"prettier --write",
