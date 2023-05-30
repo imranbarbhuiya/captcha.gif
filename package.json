@@ -1,14 +1,14 @@
 {
 	"name": "captcha.gif",
-	"version": "1.0.9",
+	"version": "1.0.10",
 	"description": "A simple captcha generator for nodejs.",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
 	"types": "dist/index.d.ts",
 	"exports": {
+		"types": "./dist/index.d.ts",
 		"import": "./dist/index.mjs",
-		"require": "./dist/index.js",
-		"types": "./dist/index.d.ts"
+		"require": "./dist/index.js"
 	},
 	"sideEffects": false,
 	"license": "MIT",
