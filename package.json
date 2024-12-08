@@ -51,9 +51,9 @@
 		"eslint-plugin-prettier": "^5.2.1",
 		"husky": "^9.1.7",
 		"lint-staged": "^15.2.10",
-		"prettier": "^3.4.1",
+		"prettier": "^3.4.2",
 		"tsup": "^8.3.5",
-		"typedoc": "^0.27.2",
+		"typedoc": "^0.27.3",
 		"typescript": "^5.7.2",
 		"vitest": "^2.1.8"
 	},
