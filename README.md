@@ -64,6 +64,6 @@ If you want to support me by donating, you can do so by using any of the followi
 
 Thanks goes to these wonderful people:
 
-<a href="https://github.com/imranbarbhuiya/TagScript/graphs/contributors">
-    <img src="https://contrib.rocks/image?repo=imranbarbhuiya/TagScript" />
+<a href="https://github.com/imranbarbhuiya/captcha.gif/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=imranbarbhuiya/captcha.gif" />
 </a>
